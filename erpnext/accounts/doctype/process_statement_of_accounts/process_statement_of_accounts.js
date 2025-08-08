@@ -92,7 +92,6 @@ frappe.ui.form.on("Process Statement Of Accounts", {
 		frm.set_value("account", "");
 		frm.set_value("cost_center", "");
 		frm.set_value("project", "");
-		erpnext.utils.set_letter_head(frm);
 	},
 	report: function (frm) {
 		let filters = {

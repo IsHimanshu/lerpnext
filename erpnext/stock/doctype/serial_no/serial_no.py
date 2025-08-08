@@ -48,10 +48,8 @@ class SerialNo(StockController):
 		item_name: DF.Data | None
 		location: DF.Link | None
 		maintenance_status: DF.Literal["", "Under Warranty", "Out of Warranty", "Under AMC", "Out of AMC"]
-		posting_date: DF.Date | None
+		purchase_document_no: DF.Data | None
 		purchase_rate: DF.Float
-		reference_doctype: DF.Link | None
-		reference_name: DF.DynamicLink | None
 		serial_no: DF.Data
 		status: DF.Literal["", "Active", "Inactive", "Consumed", "Delivered", "Expired"]
 		warehouse: DF.Link | None

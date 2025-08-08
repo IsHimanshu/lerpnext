@@ -27,7 +27,7 @@ class Company(NestedSet):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		abbr: DF.Data
+		abbr: DF.Data | None
 		accumulated_depreciation_account: DF.Link | None
 		allow_account_creation_against_child_company: DF.Check
 		asset_received_but_not_billed: DF.Link | None
@@ -87,9 +87,7 @@ class Company(NestedSet):
 		payment_terms: DF.Link | None
 		phone_no: DF.Data | None
 		reconcile_on_advance_payment_date: DF.Check
-		reconciliation_takes_effect_on: DF.Literal[
-			"Advance Payment Date", "Oldest Of Invoice Or Advance", "Reconciliation Date"
-		]
+		reconciliation_takes_effect_on: DF.Literal["Advance Payment Date", "Oldest Of Invoice Or Advance", "Reconciliation Date"]
 		registration_details: DF.Code | None
 		rgt: DF.Int
 		round_off_account: DF.Link | None

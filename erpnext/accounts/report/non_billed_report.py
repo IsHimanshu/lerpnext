@@ -46,7 +46,6 @@ def get_ordered_to_be_billed_data(args, filters=None):
 			child_doctype.item_name,
 			child_doctype.description,
 			project_field,
-			doctype.company,
 		)
 		.where(
 			(doctype.docstatus == 1)

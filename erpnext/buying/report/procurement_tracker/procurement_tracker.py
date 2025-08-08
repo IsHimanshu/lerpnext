@@ -51,7 +51,7 @@ def get_columns(filters):
 		},
 		{
 			"label": _("Requestor"),
-			"options": "User",
+			"options": "Employee",
 			"fieldname": "requestor",
 			"fieldtype": "Link",
 			"width": 140,

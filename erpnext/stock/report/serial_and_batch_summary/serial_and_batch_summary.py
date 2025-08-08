@@ -144,15 +144,7 @@ def get_columns(filters, data):
 		)
 
 	if not item_details or item_details.get("has_serial_no"):
-		columns.append(
-			{
-				"label": _("Serial No"),
-				"fieldname": "serial_no",
-				"fieldtype": "Link",
-				"width": 120,
-				"options": "Serial No",
-			}
-		)
+		columns.append({"label": _("Serial No"), "fieldname": "serial_no", "fieldtype": "Data", "width": 120})
 
 	if not item_details or item_details.get("has_batch_no"):
 		columns.extend(

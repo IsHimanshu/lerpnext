@@ -36,57 +36,38 @@ frappe.query_reports["Stock Balance"] = {
 		},
 		{
 			fieldname: "item_code",
-			label: __("Items"),
-			fieldtype: "MultiSelectList",
+			label: __("Item"),
+			fieldtype: "Link",
 			width: "80",
 			options: "Item",
-			get_data: async function (txt) {
+			get_query: function () {
 				let item_group = frappe.query_report.get_filter_value("item_group");
 
-				let filters = {
-					...(item_group && { item_group }),
-					is_stock_item: 1,
-				};
-
-				let { message: data } = await frappe.call({
-					method: "erpnext.controllers.queries.item_query",
-					args: {
-						doctype: "Item",
-						txt: txt,
-						searchfield: "name",
-						start: 0,
-						page_len: 10,
-						filters: filters,
-						as_dict: 1,
+				return {
+					query: "erpnext.controllers.queries.item_query",
+					filters: {
+						...(item_group && { item_group }),
+						is_stock_item: 1,
 					},
-				});
-
-				data = data.map(({ name, description }) => {
-					return {
-						value: name,
-						description: description,
-					};
-				});
-
-				return data || [];
+				};
 			},
 		},
 		{
 			fieldname: "warehouse",
-			label: __("Warehouses"),
-			fieldtype: "MultiSelectList",
+			label: __("Warehouse"),
+			fieldtype: "Link",
 			width: "80",
 			options: "Warehouse",
-			get_data: (txt) => {
+			get_query: () => {
 				let warehouse_type = frappe.query_report.get_filter_value("warehouse_type");
 				let company = frappe.query_report.get_filter_value("company");
 
-				let filters = {
-					...(warehouse_type && { warehouse_type }),
-					...(company && { company }),
+				return {
+					filters: {
+						...(warehouse_type && { warehouse_type }),
+						...(company && { company }),
+					},
 				};
-
-				return frappe.db.get_link_options("Warehouse", txt, filters);
 			},
 		},
 		{

@@ -457,7 +457,6 @@ class SalesOrder(SellingController):
 			"GL Entry",
 			"Stock Ledger Entry",
 			"Payment Ledger Entry",
-			"Advance Payment Ledger Entry",
 			"Unreconcile Payment",
 			"Unreconcile Payment Entries",
 		)
@@ -788,8 +787,7 @@ class SalesOrder(SellingController):
 
 		if self.delivery_date:
 			for item in self.items:
-				if not item.delivery_date:
-					item.delivery_date = self.delivery_date
+				item.delivery_date = self.delivery_date
 
 
 def get_unreserved_qty(item: object, reserved_qty_details: dict) -> float:

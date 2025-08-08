@@ -178,7 +178,7 @@ def get_columns(additional_table_columns, filters):
 				"fieldname": "invoice",
 				"fieldtype": "Link",
 				"options": "Purchase Invoice",
-				"width": 150,
+				"width": 120,
 			},
 			{"label": _("Posting Date"), "fieldname": "posting_date", "fieldtype": "Date", "width": 120},
 		]
@@ -310,8 +310,8 @@ def apply_conditions(query, pi, pii, filters):
 
 def get_items(filters, additional_table_columns):
 	doctype = "Purchase Invoice"
-	pi = frappe.qb.DocType("Purchase Invoice")
-	pii = frappe.qb.DocType("Purchase Invoice Item")
+	pi = frappe.qb.DocType(doctype)
+	pii = frappe.qb.DocType(f"{doctype} Item")
 	Item = frappe.qb.DocType("Item")
 	query = (
 		frappe.qb.from_(pi)
@@ -331,7 +331,6 @@ def get_items(filters, additional_table_columns):
 			pi.unrealized_profit_loss_account,
 			pii.item_code,
 			pii.description,
-			pii.item_name,
 			pii.item_group,
 			pii.item_name.as_("pi_item_name"),
 			pii.item_group.as_("pi_item_group"),
@@ -375,7 +374,7 @@ def get_items(filters, additional_table_columns):
 	if match_conditions:
 		query += " and " + match_conditions
 
-	query = apply_order_by_conditions(doctype, query, filters)
+	query = apply_order_by_conditions(query, pi, pii, filters)
 
 	return frappe.db.sql(query, params, as_dict=True)
 
