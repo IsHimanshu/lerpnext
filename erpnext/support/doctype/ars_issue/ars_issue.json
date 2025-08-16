@@ -1,0 +1,529 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2025-08-12 12:28:19.682793",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "email_append_to": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "subject_section",
+  "naming_series",
+  "customer",
+  "raised_by",
+  "cb00",
+  "issue_type",
+  "issue_split_from",
+  "section_break_ixit",
+  "subject",
+  "product_name",
+  "category",
+  "question_level",
+  "case_origin",
+  "client_name",
+  "stakeholder",
+  "phone_number",
+  "email_address1",
+  "column_break_zths",
+  "inquiry_handler",
+  "development_representative",
+  "status",
+  "priority",
+  "file1",
+  "file2",
+  "file3",
+  "image1",
+  "customization",
+  "sb_details",
+  "description",
+  "service_level_section",
+  "service_level_agreement",
+  "response_by",
+  "reset_service_level_agreement",
+  "cb",
+  "agreement_status",
+  "sla_resolution_by",
+  "service_level_agreement_creation",
+  "on_hold_since",
+  "total_hold_time",
+  "response",
+  "first_response_time",
+  "first_responded_on",
+  "column_break_26",
+  "avg_response_time",
+  "section_break_19",
+  "resolution_details",
+  "column_break1",
+  "opening_date",
+  "opening_time",
+  "sla_resolution_date",
+  "resolution_time",
+  "user_resolution_time",
+  "additional_info",
+  "lead",
+  "contact",
+  "email_account",
+  "column_break_16",
+  "customer_name",
+  "project",
+  "company",
+  "via_customer_portal",
+  "attachment",
+  "content_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "subject_section",
+   "fieldtype": "Section Break",
+   "options": "fa fa-flag"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "options": "ISS-.YYYY.-",
+   "print_hide": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "label": "Customer",
+   "oldfieldname": "customer",
+   "oldfieldtype": "Link",
+   "options": "ars customer",
+   "print_hide": 1,
+   "search_index": 1
+  },
+  {
+   "bold": 1,
+   "depends_on": "eval:doc.__islocal",
+   "fieldname": "raised_by",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Raised By (Email)",
+   "oldfieldname": "raised_by",
+   "oldfieldtype": "Data",
+   "options": "Email"
+  },
+  {
+   "fieldname": "cb00",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "issue_type",
+   "fieldtype": "Link",
+   "label": "Issue Type",
+   "options": "Issue Type"
+  },
+  {
+   "fieldname": "issue_split_from",
+   "fieldtype": "Link",
+   "label": "Issue Split From",
+   "options": "Issue",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_ixit",
+   "fieldtype": "Section Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_standard_filter": 1,
+   "label": "\u4ef6\u540d ",
+   "reqd": 1
+  },
+  {
+   "fieldname": "product_name",
+   "fieldtype": "Select",
+   "label": "\u88fd\u54c1\u540d",
+   "options": "None\n\u901a\u8ca9Ace\n\u901a\u8ca9\u30d7\u30ed"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "\u7a2e\u985e",
+   "options": "None\n\u64cd\u4f5c\u8aac\u660e\n\u4f5c\u696d\u4f9d\u983c\n\u6a5f\u80fd\u8981\u671b\n\u4e0d\u5177\u5408\n\u969c\u5bb3\n\u8acb\u6c42\u66f8\u3001\u5408\u610f\u66f8\n\u305d\u306e\u4ed6"
+  },
+  {
+   "fieldname": "question_level",
+   "fieldtype": "Select",
+   "label": "\u8cea\u554f\u30ec\u30d9\u30eb",
+   "options": "None\n\u672a\u5206\u985e\n\u6613 - \u55b6\u696d\u3042\u3066 \u5c0e\u5165\u524d\u306a\u3069\u306e\u8cea\u554f\n\u666e - CS\u3042\u3066 AI\u5b66\u7fd2\u3055\u305b\u308b\u8cea\u554f\n\u96e3 - CS\u3042\u3066 AI\u5b66\u7fd2\u3055\u305b\u306a\u3044\u8cea\u554f\n\u7279 - \u30ab\u30b9\u30bf\u30de\u30a4\u30ba"
+  },
+  {
+   "fieldname": "case_origin",
+   "fieldtype": "Select",
+   "label": "\u554f\u3044\u5408\u308f\u305b\u306e\u30c7\u30fc\u30bf\u5143",
+   "options": "None\n\u96fb\u8a71\nChatwork\nBacklog\nSlack\n\u30b9\u30d7\u30ec\u30c3\u30c9\u30b7\u30fc\u30c8\n\u8907\u6570\u306e\u624b\u6bb5"
+  },
+  {
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "label": "\u53d6\u5f15\u5148\u540d"
+  },
+  {
+   "fieldname": "stakeholder",
+   "fieldtype": "Data",
+   "label": "\u95a2\u4fc2\u8005"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "label": "\u96fb\u8a71\u756a\u53f7"
+  },
+  {
+   "fieldname": "email_address1",
+   "fieldtype": "Data",
+   "label": "\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9\uff11"
+  },
+  {
+   "fieldname": "column_break_zths",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inquiry_handler",
+   "fieldtype": "Select",
+   "label": "\u554f\u3044\u5408\u308f\u305b\u306e\u62c5\u5f53\u8005"
+  },
+  {
+   "fieldname": "development_representative",
+   "fieldtype": "Select",
+   "label": "\u958b\u767a\u62c5\u5f53\u8005"
+  },
+  {
+   "default": "None",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "\u30b9\u30c6\u30fc\u30bf\u30b9",
+   "no_copy": 1,
+   "oldfieldname": "status",
+   "oldfieldtype": "Select",
+   "options": "None\n\u5bfe\u5fdc\u4e2d - CS\u5bfe\u5fdc\u4e2d\n\u5bfe\u5fdc\u4e2d - PG\u5bfe\u5fdc\u4e2d\n\u5bfe\u5fdc\u4e2d - \u304a\u5ba2\u69d8\u78ba\u8a8d\u5f85\u3061\n\u672a\u5bfe\u5fdc\n\u4fdd\u7559\n\u6a5f\u80fd\u8981\u671b\n\u5b8c\u4e86",
+   "search_index": 1
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "\u512a\u5148\u5ea6",
+   "options": "None\n\u9ad8\n\u4e2d\n\u4f4e\n\u5b8c\u4e86\n\u672a\u78ba\u5b9a"
+  },
+  {
+   "fieldname": "file1",
+   "fieldtype": "Attach",
+   "label": "\u30d5\u30a1\u30a4\u30eb\u306e\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\uff11"
+  },
+  {
+   "fieldname": "file2",
+   "fieldtype": "Attach",
+   "label": "\u30d5\u30a1\u30a4\u30eb\u306e\u30a2\u30c3\u30d7\u30ed\u30fc\u30c92"
+  },
+  {
+   "fieldname": "file3",
+   "fieldtype": "Attach",
+   "label": "\u30d5\u30a1\u30a4\u30eb\u306e\u30a2\u30c3\u30d7\u30ed\u30fc\u30c93"
+  },
+  {
+   "fieldname": "image1",
+   "fieldtype": "Attach Image",
+   "label": "\u753b\u50cf\u306e\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\uff11"
+  },
+  {
+   "fieldname": "customization",
+   "fieldtype": "Select",
+   "label": "\u672c\u6848\u4ef6\u306f\u30ab\u30b9\u30bf\u30de\u30a4\u30ba\u5bfe\u8c61",
+   "options": "\u5bfe\u8c61\n\u5bfe\u8c61\u5916"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.status!=\"Closed\"",
+   "fieldname": "sb_details",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "bold": 1,
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "in_global_search": 1,
+   "label": "Description",
+   "oldfieldname": "problem_description",
+   "oldfieldtype": "Text"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "service_level_section",
+   "fieldtype": "Section Break",
+   "label": "Service Level Agreement Details"
+  },
+  {
+   "fieldname": "service_level_agreement",
+   "fieldtype": "Link",
+   "label": "Service Level Agreement",
+   "options": "Service Level Agreement"
+  },
+  {
+   "depends_on": "eval: doc.status != 'Replied' && doc.service_level_agreement;",
+   "fieldname": "response_by",
+   "fieldtype": "Datetime",
+   "label": "Response By",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.service_level_agreement",
+   "fieldname": "reset_service_level_agreement",
+   "fieldtype": "Button",
+   "label": "Reset Service Level Agreement"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "cb",
+   "fieldtype": "Column Break",
+   "options": "fa fa-pushpin",
+   "read_only": 1
+  },
+  {
+   "default": "First Response Due",
+   "depends_on": "eval: doc.service_level_agreement",
+   "fieldname": "agreement_status",
+   "fieldtype": "Select",
+   "label": "Service Level Agreement Status",
+   "options": "First Response Due\nResolution Due\nFulfilled\nFailed",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.status != 'Replied' && doc.service_level_agreement;",
+   "fieldname": "sla_resolution_by",
+   "fieldtype": "Datetime",
+   "label": "Resolution By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "service_level_agreement_creation",
+   "fieldtype": "Datetime",
+   "hidden": 1,
+   "label": "Service Level Agreement Creation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "on_hold_since",
+   "fieldtype": "Datetime",
+   "hidden": 1,
+   "label": "On Hold Since",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_hold_time",
+   "fieldtype": "Duration",
+   "label": "Total Hold Time",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "response",
+   "fieldtype": "Section Break",
+   "label": "Response Details"
+  },
+  {
+   "bold": 1,
+   "fieldname": "first_response_time",
+   "fieldtype": "Duration",
+   "label": "First Response Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "first_responded_on",
+   "fieldtype": "Datetime",
+   "label": "First Responded On"
+  },
+  {
+   "fieldname": "column_break_26",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "avg_response_time",
+   "fieldtype": "Duration",
+   "label": "Average Response Time",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_19",
+   "fieldtype": "Section Break",
+   "label": "Resolution Details"
+  },
+  {
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "resolution_details",
+   "fieldtype": "Text Editor",
+   "label": "Resolution Details",
+   "no_copy": 1,
+   "oldfieldname": "resolution_details",
+   "oldfieldtype": "Text"
+  },
+  {
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "column_break1",
+   "fieldtype": "Column Break",
+   "oldfieldtype": "Column Break",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "opening_date",
+   "fieldtype": "Date",
+   "label": "Opening Date",
+   "no_copy": 1,
+   "oldfieldname": "opening_date",
+   "oldfieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "opening_time",
+   "fieldtype": "Time",
+   "label": "Opening Time",
+   "no_copy": 1,
+   "oldfieldname": "opening_time",
+   "oldfieldtype": "Time",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "sla_resolution_date",
+   "fieldtype": "Datetime",
+   "label": "Resolution Date",
+   "no_copy": 1,
+   "oldfieldname": "resolution_date",
+   "oldfieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "resolution_time",
+   "fieldtype": "Duration",
+   "label": "Resolution Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "user_resolution_time",
+   "fieldtype": "Duration",
+   "label": "User Resolution Time",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "additional_info",
+   "fieldtype": "Section Break",
+   "label": "Reference",
+   "options": "fa fa-pushpin",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lead",
+   "fieldtype": "Link",
+   "label": "Lead",
+   "options": "Lead"
+  },
+  {
+   "fieldname": "contact",
+   "fieldtype": "Link",
+   "label": "Contact",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "email_account",
+   "fieldtype": "Link",
+   "label": "Email Account",
+   "options": "Email Account"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "oldfieldname": "customer_name",
+   "oldfieldtype": "Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "print_hide": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "via_customer_portal",
+   "fieldtype": "Check",
+   "label": "Via Customer Portal"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "hidden": 1,
+   "label": "Attachment"
+  },
+  {
+   "fieldname": "content_type",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Content Type"
+  }
+ ],
+ "icon": "fa fa-ticket",
+ "links": [],
+ "modified": "2025-08-12 14:02:18.280293",
+ "modified_by": "Administrator",
+ "module": "Support",
+ "name": "ars issue",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Support Team",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "row_format": "Dynamic",
+ "search_fields": "status,customer,subject,raised_by",
+ "sender_field": "raised_by",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "subject_field": "subject",
+ "timeline_field": "customer",
+ "title_field": "subject",
+ "track_changes": 1,
+ "track_seen": 1
+}

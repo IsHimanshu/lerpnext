@@ -1473,7 +1473,6 @@ def get_stock_balance_for(
 				posting_time=posting_time,
 				for_stock_levels=True,
 				consider_negative_batches=True,
-				do_not_check_future_batches=True,
 			)
 			or 0
 		)

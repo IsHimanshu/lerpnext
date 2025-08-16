@@ -9,6 +9,8 @@
  "field_order": [
   "department_name",
   "parent_department",
+  "dept_head",
+  "team_lead",
   "column_break_3",
   "company",
   "is_group",
@@ -84,13 +86,25 @@
   {
    "fieldname": "column_break_3",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dept_head",
+   "fieldtype": "Link",
+   "label": "Department Head",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "team_lead",
+   "fieldtype": "Link",
+   "label": "Team Leader",
+   "options": "Employee"
   }
  ],
  "icon": "fa fa-sitemap",
  "idx": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2024-06-12 16:10:31.451257",
+ "modified": "2025-07-30 18:23:12.243833",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Department",
@@ -138,6 +152,7 @@
    "select": 1
   }
  ],
+ "row_format": "Dynamic",
  "show_name_in_global_search": 1,
  "sort_field": "creation",
  "sort_order": "ASC",

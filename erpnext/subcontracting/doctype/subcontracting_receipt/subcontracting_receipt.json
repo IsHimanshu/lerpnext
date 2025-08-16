@@ -152,7 +152,6 @@
    "width": "100px"
   },
   {
-   "default": "Now",
    "description": "Time at which materials were received",
    "fieldname": "posting_time",
    "fieldtype": "Time",

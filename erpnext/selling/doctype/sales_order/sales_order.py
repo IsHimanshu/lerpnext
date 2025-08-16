@@ -457,7 +457,6 @@ class SalesOrder(SellingController):
 			"GL Entry",
 			"Stock Ledger Entry",
 			"Payment Ledger Entry",
-			"Advance Payment Ledger Entry",
 			"Unreconcile Payment",
 			"Unreconcile Payment Entries",
 		)
@@ -788,8 +787,7 @@ class SalesOrder(SellingController):
 
 		if self.delivery_date:
 			for item in self.items:
-				if not item.delivery_date:
-					item.delivery_date = self.delivery_date
+				item.delivery_date = self.delivery_date
 
 
 def get_unreserved_qty(item: object, reserved_qty_details: dict) -> float:
@@ -993,11 +991,6 @@ def make_delivery_note(source_name, target_doc=None, kwargs=None):
 	def is_unit_price_row(source):
 		return has_unit_price_items and source.qty == 0
 
-	def select_item(d):
-		filtered_items = kwargs.get("filtered_children", [])
-		child_filter = d.name in filtered_items if filtered_items else True
-		return child_filter
-
 	def set_missing_values(source, target):
 		if kwargs.get("ignore_pricing_rule"):
 			# Skip pricing rule when the dn is creating from the pick list
@@ -1066,7 +1059,7 @@ def make_delivery_note(source_name, target_doc=None, kwargs=None):
 				"name": "so_detail",
 				"parent": "against_sales_order",
 			},
-			"condition": lambda d: condition(d) and select_item(d),
+			"condition": condition,
 			"postprocess": update_item,
 		}
 
@@ -1134,12 +1127,7 @@ def make_delivery_note(source_name, target_doc=None, kwargs=None):
 
 
 @frappe.whitelist()
-def make_sales_invoice(source_name, target_doc=None, ignore_permissions=False, args=None):
-	if args is None:
-		args = {}
-	if isinstance(args, str):
-		args = json.loads(args)
-
+def make_sales_invoice(source_name, target_doc=None, ignore_permissions=False):
 	# 0 qty is accepted, as the qty is uncertain for some items
 	has_unit_price_items = frappe.db.get_value("Sales Order", source_name, "has_unit_price_items")
 
@@ -1200,11 +1188,6 @@ def make_sales_invoice(source_name, target_doc=None, ignore_permissions=False, a
 			if cost_center:
 				target.cost_center = cost_center
 
-	def select_item(d):
-		filtered_items = args.get("filtered_children", [])
-		child_filter = d.name in filtered_items if filtered_items else True
-		return child_filter
-
 	doclist = get_mapped_doc(
 		"Sales Order",
 		source_name,
@@ -1229,8 +1212,7 @@ def make_sales_invoice(source_name, target_doc=None, ignore_permissions=False, a
 					True
 					if is_unit_price_row(doc)
 					else (doc.qty and (doc.base_amount == 0 or abs(doc.billed_amt) < abs(doc.amount)))
-				)
-				and select_item(doc),
+				),
 			},
 			"Sales Taxes and Charges": {
 				"doctype": "Sales Taxes and Charges",

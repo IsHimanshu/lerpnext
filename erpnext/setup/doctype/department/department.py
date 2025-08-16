@@ -21,12 +21,14 @@ class Department(NestedSet):
 
 		company: DF.Link
 		department_name: DF.Data
+		dept_head: DF.Link | None
 		disabled: DF.Check
 		is_group: DF.Check
 		lft: DF.Int
 		old_parent: DF.Data | None
 		parent_department: DF.Link | None
 		rgt: DF.Int
+		team_lead: DF.Link | None
 	# end: auto-generated types
 
 	nsm_parent_field = "parent_department"
@@ -66,7 +68,7 @@ def on_doctype_update():
 
 def get_abbreviated_name(name, company):
 	abbr = frappe.get_cached_value("Company", company, "abbr")
-	new_name = f"{name} - {abbr}"
+	new_name = f"{name}"
 	return new_name
 
 

@@ -349,18 +349,13 @@ frappe.ui.form.on("Work Order", {
 					return operations_data;
 				},
 			},
-			function () {
-				const selected_rows = dialog.fields_dict["operations"].grid.get_selected_children();
-				if (selected_rows.length == 0) {
-					frappe.msgprint(__("Please select atleast one operation to create Job Card"));
-					return;
-				}
+			function (data) {
 				frappe.call({
 					method: "erpnext.manufacturing.doctype.work_order.work_order.make_job_card",
 					freeze: true,
 					args: {
 						work_order: frm.doc.name,
-						operations: selected_rows,
+						operations: data.operations,
 					},
 					callback: function () {
 						frm.reload_doc();
@@ -371,7 +366,7 @@ frappe.ui.form.on("Work Order", {
 			__("Create")
 		);
 
-		dialog.fields_dict["operations"].grid.grid_buttons.hide();
+		dialog.fields_dict["operations"].grid.wrapper.find(".grid-add-row").hide();
 
 		var pending_qty = 0;
 		frm.doc.operations.forEach((data) => {

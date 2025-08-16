@@ -1003,13 +1003,6 @@ erpnext.stock.StockEntry = class StockEntry extends erpnext.stock.StockControlle
 	setup() {
 		var me = this;
 
-		this.barcode_scanner = new erpnext.utils.BarcodeScanner({
-			frm: this.frm,
-			warehouse_field: (doc) => {
-				return doc.purpose === "Material Transfer" ? "t_warehouse" : "s_warehouse";
-			},
-		});
-
 		this.setup_posting_date_time_check();
 
 		this.frm.fields_dict.bom_no.get_query = function () {
@@ -1139,7 +1132,8 @@ erpnext.stock.StockEntry = class StockEntry extends erpnext.stock.StockControlle
 
 	scan_barcode() {
 		frappe.flags.dialog_set = false;
-		this.barcode_scanner.process_scan();
+		const barcode_scanner = new erpnext.utils.BarcodeScanner({ frm: this.frm });
+		barcode_scanner.process_scan();
 	}
 
 	on_submit() {

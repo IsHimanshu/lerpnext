@@ -35,7 +35,7 @@ def get_brand_defaults(item, company):
 
 		for d in brand.brand_defaults or []:
 			if d.company == company:
-				row = d.as_dict(no_private_properties=True)
+				row = copy.deepcopy(d.as_dict())
 				row.pop("name")
 				return row
 

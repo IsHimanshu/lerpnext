@@ -4,7 +4,7 @@
  "allow_import": 1,
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2022-02-21 11:54:09.632218",
+ "creation": "2025-07-29 17:47:40.625075",
  "doctype": "DocType",
  "document_type": "Setup",
  "editable_grid": 1,
@@ -39,6 +39,10 @@
   "reports_to",
   "column_break_18",
   "branch",
+  "applications_tab",
+  "days",
+  "allowance",
+  "column_break_avtp",
   "employment_details",
   "scheduled_confirmation_date",
   "column_break_32",
@@ -76,6 +80,7 @@
   "ctc",
   "salary_currency",
   "salary_mode",
+  "billing_rate",
   "bank_details_section",
   "bank_name",
   "column_break_heye",
@@ -304,6 +309,7 @@
    "collapsible": 1,
    "fieldname": "employment_details",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Joining"
   },
   {
@@ -366,6 +372,7 @@
    "search_index": 1
   },
   {
+   "fetch_from": "department.dept_head",
    "fieldname": "reports_to",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
@@ -396,6 +403,7 @@
    "collapsible": 1,
    "fieldname": "salary_information",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Salary",
    "oldfieldtype": "Section Break",
    "width": "50%"
@@ -600,6 +608,7 @@
    "collapsible": 1,
    "fieldname": "exit",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Employee Exit",
    "oldfieldtype": "Section Break"
   },
@@ -702,6 +711,7 @@
    "collapsible": 1,
    "fieldname": "attendance_and_leave_details",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Attendance & Leaves"
   },
   {
@@ -751,6 +761,7 @@
   {
    "fieldname": "profile_tab",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Profile"
   },
   {
@@ -778,6 +789,7 @@
   {
    "fieldname": "connections_tab",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Connections",
    "show_dashboard": 1
   },
@@ -815,14 +827,40 @@
    "fieldname": "iban",
    "fieldtype": "Data",
    "label": "IBAN"
+  },
+  {
+   "fieldname": "billing_rate",
+   "fieldtype": "Int",
+   "label": "Billing Rate",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "applications_tab",
+   "fieldtype": "Tab Break",
+   "label": "Applications"
+  },
+  {
+   "fieldname": "allowance",
+   "fieldtype": "Int",
+   "label": "Breakfast Allowance Range",
+   "read_only_depends_on": "eval:frappe.session.user !== 'Administrator'\r\n"
+  },
+  {
+   "fieldname": "days",
+   "fieldtype": "Int",
+   "label": "Total Breakfast days",
+   "read_only_depends_on": "eval:frappe.session.user !== 'Administrator'\r\n"
+  },
+  {
+   "fieldname": "column_break_avtp",
+   "fieldtype": "Column Break"
   }
  ],
  "icon": "fa fa-user",
- "idx": 24,
  "image_field": "image",
  "is_tree": 1,
  "links": [],
- "modified": "2025-07-04 08:29:34.347269",
+ "modified": "2025-07-31 18:21:57.610920",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Employee",
@@ -864,6 +902,7 @@
    "write": 1
   }
  ],
+ "row_format": "Dynamic",
  "search_fields": "employee_name",
  "show_name_in_global_search": 1,
  "sort_field": "creation",

@@ -255,8 +255,6 @@ class StockReservationEntry(Document):
 			not self.from_voucher_type
 			and (self.get("_action") == "submit")
 			and (self.has_serial_no or self.has_batch_no)
-			and frappe.get_single_value("Stock Settings", "auto_reserve_serial_and_batch")
-			and not self.sb_entries
 		):
 			from erpnext.stock.doctype.batch.batch import get_available_batches
 			from erpnext.stock.doctype.serial_no.serial_no import get_serial_nos_for_outward
@@ -502,7 +500,7 @@ class StockReservationEntry(Document):
 					status = "Delivered"
 				elif self.delivered_qty and self.delivered_qty < self.reserved_qty:
 					status = "Partially Delivered"
-				elif self.reserved_qty >= self.voucher_qty:
+				elif self.reserved_qty == self.voucher_qty:
 					status = "Reserved"
 				else:
 					status = "Partially Reserved"
@@ -701,7 +699,8 @@ def get_available_qty_to_reserve(
 				(sre.docstatus == 1)
 				& (sre.item_code == item_code)
 				& (sre.warehouse == warehouse)
-				& (sre.delivered_qty < sre.reserved_qty)
+				& (sre.reserved_qty >= sre.delivered_qty)
+				& (sre.status.notin(["Delivered", "Cancelled"]))
 			)
 		)
 
@@ -751,7 +750,8 @@ def get_available_serial_nos_to_reserve(
 				(sre.docstatus == 1)
 				& (sre.item_code == item_code)
 				& (sre.warehouse == warehouse)
-				& (sre.delivered_qty < sre.reserved_qty)
+				& (sre.reserved_qty >= sre.delivered_qty)
+				& (sre.status.notin(["Delivered", "Cancelled"]))
 				& (sre.reservation_based_on == "Serial and Batch")
 			)
 		)
@@ -781,7 +781,11 @@ def get_sre_reserved_qty_for_item_and_warehouse(item_code: str, warehouse: str |
 				"reserved_qty"
 			)
 		)
-		.where((sre.docstatus == 1) & (sre.item_code == item_code) & (sre.delivered_qty < sre.reserved_qty))
+		.where(
+			(sre.docstatus == 1)
+			& (sre.item_code == item_code)
+			& (sre.status.notin(["Delivered", "Cancelled"]))
+		)
 		.groupby(sre.item_code, sre.warehouse)
 	)
 
@@ -810,7 +814,9 @@ def get_sre_reserved_qty_for_items_and_warehouses(
 			Sum(sre.reserved_qty - sre.delivered_qty).as_("reserved_qty"),
 		)
 		.where(
-			(sre.docstatus == 1) & sre.item_code.isin(item_code_list) & (sre.delivered_qty < sre.reserved_qty)
+			(sre.docstatus == 1)
+			& sre.item_code.isin(item_code_list)
+			& (sre.status.notin(["Delivered", "Cancelled"]))
 		)
 		.groupby(sre.item_code, sre.warehouse)
 	)
@@ -837,7 +843,7 @@ def get_sre_reserved_qty_details_for_voucher(voucher_type: str, voucher_no: str)
 			(sre.docstatus == 1)
 			& (sre.voucher_type == voucher_type)
 			& (sre.voucher_no == voucher_no)
-			& (sre.delivered_qty < sre.reserved_qty)
+			& (sre.status.notin(["Delivered", "Cancelled"]))
 		)
 		.groupby(sre.voucher_detail_no)
 	).run(as_list=True)
@@ -859,7 +865,7 @@ def get_sre_reserved_warehouses_for_voucher(
 			(sre.docstatus == 1)
 			& (sre.voucher_type == voucher_type)
 			& (sre.voucher_no == voucher_no)
-			& (sre.delivered_qty < sre.reserved_qty)
+			& (sre.status.notin(["Delivered", "Cancelled"]))
 		)
 		.orderby(sre.creation)
 	)
@@ -900,7 +906,7 @@ def get_sre_reserved_qty_for_voucher_detail_no(
 			& (sre.voucher_type == voucher_type)
 			& (sre.voucher_no == voucher_no)
 			& (sre.voucher_detail_no == voucher_detail_no)
-			& (sre.delivered_qty < sre.reserved_qty)
+			& (sre.status.notin(["Delivered", "Cancelled"]))
 		)
 	)
 
@@ -934,7 +940,8 @@ def get_sre_reserved_serial_nos_details(
 			(sre.docstatus == 1)
 			& (sre.item_code == item_code)
 			& (sre.warehouse == warehouse)
-			& (sre.delivered_qty < sre.reserved_qty)
+			& (sre.reserved_qty > sre.delivered_qty)
+			& (sre.status.notin(["Delivered", "Cancelled"]))
 			& (sre.reservation_based_on == "Serial and Batch")
 		)
 		.orderby(sb_entry.creation)
@@ -964,7 +971,7 @@ def get_sre_reserved_batch_nos_details(item_code: str, warehouse: str, batch_nos
 			& (sre.item_code == item_code)
 			& (sre.warehouse == warehouse)
 			& ((sre.reserved_qty - sre.delivered_qty) > 0)
-			& (sre.delivered_qty < sre.reserved_qty)
+			& (sre.status.notin(["Delivered", "Cancelled"]))
 			& (sre.reservation_based_on == "Serial and Batch")
 		)
 		.groupby(sb_entry.batch_no)
@@ -999,7 +1006,8 @@ def get_sre_details_for_voucher(voucher_type: str, voucher_no: str) -> list[dict
 			(sre.docstatus == 1)
 			& (sre.voucher_type == voucher_type)
 			& (sre.voucher_no == voucher_no)
-			& (sre.delivered_qty < sre.reserved_qty)
+			& (sre.reserved_qty > sre.delivered_qty)
+			& (sre.status.notin(["Delivered", "Cancelled"]))
 		)
 		.orderby(sre.creation)
 	).run(as_dict=True)
@@ -1020,7 +1028,7 @@ def get_serial_batch_entries_for_voucher(sre_name: str) -> list[dict]:
 			sb_entry.batch_no,
 			(sb_entry.qty - sb_entry.delivered_qty).as_("qty"),
 		)
-		.where((sre.docstatus == 1) & (sre.name == sre_name) & (sre.delivered_qty < sre.reserved_qty))
+		.where((sre.docstatus == 1) & (sre.name == sre_name) & (sre.status.notin(["Delivered", "Cancelled"])))
 		.where(sb_entry.qty > sb_entry.delivered_qty)
 		.orderby(sb_entry.creation)
 	).run(as_dict=True)
@@ -1240,7 +1248,8 @@ class StockReservation:
 					(sre.docstatus == 1)
 					& (sre.item_code == item_code)
 					& (sre.warehouse == warehouse)
-					& (sre.delivered_qty < sre.reserved_qty)
+					& (sre.reserved_qty >= sre.delivered_qty)
+					& (sre.status.notin(["Delivered", "Cancelled"]))
 				)
 			)
 
@@ -1427,7 +1436,7 @@ class StockReservation:
 			)
 			.where(
 				(sre.docstatus == 1)
-				& (sre.delivered_qty < sre.reserved_qty)
+				& (sre.status.notin(["Delivered", "Cancelled", "Draft", "Closed"]))
 				& (sre.voucher_type == doctype)
 				& (sre.voucher_no.isin(docnames))
 			)
@@ -1726,7 +1735,7 @@ def cancel_stock_reservation_entries(
 					(sre.docstatus == 1)
 					& (sre.from_voucher_type == from_voucher_type)
 					& (sre.from_voucher_no == from_voucher_no)
-					& (sre.delivered_qty < sre.reserved_qty)
+					& (sre.status.notin(["Delivered", "Cancelled"]))
 				)
 				.orderby(sre.creation)
 			)
@@ -1782,7 +1791,7 @@ def get_stock_reservation_entries_for_voucher(
 		query = query.where(sre.voucher_detail_no == voucher_detail_no)
 
 	if ignore_status:
-		query = query.where(sre.delivered_qty < sre.reserved_qty)
+		query = query.where(sre.status.notin(["Delivered", "Cancelled"]))
 
 	return query.run(as_dict=True)
 

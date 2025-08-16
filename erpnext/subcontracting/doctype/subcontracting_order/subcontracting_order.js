@@ -192,10 +192,6 @@ frappe.ui.form.on("Subcontracting Order", {
 		});
 	},
 
-	company: function (frm) {
-		erpnext.utils.set_letter_head(frm);
-	},
-
 	get_materials_from_supplier: function (frm) {
 		let sco_rm_details = [];
 

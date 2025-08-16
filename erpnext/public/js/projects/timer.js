@@ -1,6 +1,8 @@
 frappe.provide("erpnext.timesheet");
 
 erpnext.timesheet.timer = function (frm, row, timestamp = 0) {
+	//let lapTimes = [];
+	//let lapContainer = dialog.$wrapper.find('.lap-times');
 	let dialog = new frappe.ui.Dialog({
 		title: __("Timer"),
 		fields: [
@@ -42,8 +44,10 @@ erpnext.timesheet.timer = function (frm, row, timestamp = 0) {
 			</div>
 			<div class="playpause text-center">
 				<button class= "btn btn-primary btn-start"> ${__("Start")} </button>
+				<button class="btn btn-secondary btn-lap">${__("Lap")}</button>
 				<button class= "btn btn-primary btn-complete"> ${__("Complete")} </button>
 			</div>
+			<div class="lap-times">
 		`;
 	}
 	erpnext.timesheet.control_timer(frm, dialog, row, timestamp);
@@ -53,6 +57,7 @@ erpnext.timesheet.timer = function (frm, row, timestamp = 0) {
 erpnext.timesheet.control_timer = function (frm, dialog, row, timestamp = 0) {
 	var $btn_start = dialog.$wrapper.find(".playpause .btn-start");
 	var $btn_complete = dialog.$wrapper.find(".playpause .btn-complete");
+	var $btn_lap = dialog.$wrapper.find(".playpause .btn-lap");
 	var interval = null;
 	var currentIncrement = timestamp;
 	var initialized = row ? true : false;
@@ -111,21 +116,56 @@ erpnext.timesheet.control_timer = function (frm, dialog, row, timestamp = 0) {
 		}
 	});
 
-	// Stop the timer and update the time logged by the timer on click of 'Complete' button
-	$btn_complete.click(function () {
+	function complete_current_row(dialog) {
+		if (!row) return;
+
 		var grid_row = frm.fields_dict["time_logs"].grid.get_row(row.idx - 1);
-		var args = dialog.get_values();
+		var args = dialog.get_values(dialog);
+
 		grid_row.doc.completed = 1;
 		grid_row.doc.activity_type = args.activity_type;
 		grid_row.doc.project = args.project;
 		grid_row.doc.task = args.task;
 		grid_row.doc.expected_hours = args.expected_hours;
 		grid_row.doc.to_time = frappe.datetime.get_datetime_as_string();
+
 		grid_row.refresh();
+		frm.dirty();
+}
+
+
+	// Stop the timer and update the time logged by the timer on click of 'Complete' button
+	$btn_complete.click(function () {
+		// var grid_row = frm.fields_dict["time_logs"].grid.get_row(row.idx - 1);
+		// var args = dialog.get_values();
+		// grid_row.doc.completed = 1;
+		// grid_row.doc.activity_type = args.activity_type;
+		// grid_row.doc.project = args.project;
+		// grid_row.doc.task = args.task;
+		// grid_row.doc.expected_hours = args.expected_hours;
+		// grid_row.doc.to_time = frappe.datetime.get_datetime_as_string();
+		// grid_row.refresh();
+		complete_current_row(dialog)
 		frm.dirty();
 		frm.save();
 		reset();
 		dialog.hide();
+	});
+	$btn_lap.click(function(){
+		if (!initialized || !row) return;
+		complete_current_row(dialog);
+		const now = frappe.datetime.get_datetime_as_string();
+		const newRow = frappe.model.add_child(frm.doc, "Timesheet Detail", "time_logs");
+
+		newRow.activity_type = "Select"; 
+		newRow.from_time = now;
+		newRow.completed = 0;
+
+		row = newRow;
+		currentIncrement = 0;
+
+		frm.refresh_field("time_logs");
+		frm.save();
 	});
 
 	function initializeTimer() {
