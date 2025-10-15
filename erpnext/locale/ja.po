@@ -113,12 +113,12 @@ msgstr "％請求"
 #. Label of the percent_complete_method (Select) field in DocType 'Project'
 #: erpnext/projects/doctype/project/project.json
 msgid "% Complete Method"
-msgstr "％完全な方法"
+msgstr "完了基準"
 
 #. Label of the percent_complete (Percent) field in DocType 'Project'
 #: erpnext/projects/doctype/project/project.json
 msgid "% Completed"
-msgstr "％完成"
+msgstr "%進捗"
 
 #. Label of the per_delivered (Percent) field in DocType 'Pick List'
 #: erpnext/stock/doctype/pick_list/pick_list.json
@@ -2743,7 +2743,7 @@ msgstr "実際のバッチ数量"
 
 #: erpnext/buying/report/procurement_tracker/procurement_tracker.py:101
 msgid "Actual Cost"
-msgstr "実際のコスト"
+msgstr "実績コスト"
 
 #. Label of the actual_date (Date) field in DocType 'Maintenance Schedule
 #. Detail'
@@ -2886,7 +2886,7 @@ msgstr "実際の時間とコスト"
 #: erpnext/projects/doctype/project/project.json
 #: erpnext/projects/doctype/task/task.json
 msgid "Actual Time in Hours (via Timesheet)"
-msgstr "実際の時間の時間（タイムシート経由）"
+msgstr "実績期間"
 
 #: erpnext/stock/page/stock_balance/stock_balance.js:55
 msgid "Actual qty in stock"
@@ -11167,7 +11167,7 @@ msgstr "未払いの金額を収集します"
 #. Label of the collect_progress (Check) field in DocType 'Project'
 #: erpnext/projects/doctype/project/project.json
 msgid "Collect Progress"
-msgstr "進捗を収集します"
+msgstr "進捗監視設定をオン"
 
 #. Label of the collection_factor (Currency) field in DocType 'Loyalty Program
 #. Collection'
@@ -12129,7 +12129,7 @@ msgstr "完全な注文"
 #: erpnext/subcontracting/doctype/subcontracting_receipt/subcontracting_receipt.json
 #: erpnext/telephony/doctype/call_log/call_log.json
 msgid "Completed"
-msgstr "完了しました"
+msgstr "完了"
 
 #. Label of the completed_by (Link) field in DocType 'Task'
 #: erpnext/projects/doctype/task/task.json
@@ -13997,7 +13997,7 @@ msgstr "{0} {1}を作成しますか？"
 
 #: erpnext/manufacturing/report/work_order_summary/work_order_summary.py:224
 msgid "Created On"
-msgstr "に作成されました"
+msgstr "作成日順"
 
 #: erpnext/buying/doctype/supplier_scorecard/supplier_scorecard.py:250
 msgid "Created {0} scorecards for {1} between:"
@@ -19180,7 +19180,7 @@ msgstr "カートを編集します"
 
 #: erpnext/public/js/utils/serial_no_batch_selector.js:31
 msgid "Edit Full Form"
-msgstr "フルフォームを編集します"
+msgstr "詳細入力"
 
 #: erpnext/controllers/item_variant.py:155
 msgid "Edit Not Allowed"
@@ -20252,7 +20252,7 @@ msgstr "推定到着"
 #: erpnext/buying/report/procurement_tracker/procurement_tracker.py:96
 #: erpnext/projects/doctype/project/project.json
 msgid "Estimated Cost"
-msgstr "推定コスト"
+msgstr "見積コスト"
 
 #. Label of the estimated_time_and_cost (Section Break) field in DocType 'Work
 #. Order Operation'
@@ -20585,7 +20585,7 @@ msgstr "予想配達日は、販売注文日後のものでなければなりま
 #: erpnext/projects/report/delayed_tasks_summary/delayed_tasks_summary.py:104
 #: erpnext/templates/pages/task_info.html:64
 msgid "Expected End Date"
-msgstr "予想終了日"
+msgstr "終了予定日"
 
 #: erpnext/projects/doctype/task/task.py:108
 msgid ""
@@ -20609,7 +20609,7 @@ msgstr "予想HR"
 #: erpnext/projects/report/delayed_tasks_summary/delayed_tasks_summary.py:98
 #: erpnext/templates/pages/task_info.html:59
 msgid "Expected Start Date"
-msgstr "予想される開始日"
+msgstr "開始予定日"
 
 #: erpnext/stock/report/incorrect_stock_value_report/incorrect_stock_value_report.py:129
 msgid "Expected Stock Value"
@@ -22491,7 +22491,7 @@ msgstr "株主から"
 #: erpnext/accounts/doctype/journal_entry/journal_entry.json
 #: erpnext/projects/doctype/project/project.json
 msgid "From Template"
-msgstr "テンプレートから"
+msgstr "テンプレート"
 
 #. Label of the from_time (Time) field in DocType 'Cashier Closing'
 #. Label of the from_time (Datetime) field in DocType 'Sales Invoice
@@ -22521,12 +22521,12 @@ msgstr "テンプレートから"
 #: erpnext/telephony/doctype/incoming_call_handling_schedule/incoming_call_handling_schedule.json
 #: erpnext/templates/pages/timelog_info.html:31
 msgid "From Time"
-msgstr "時間から"
+msgstr "開始時間"
 
 #. Label of the from_time (Time) field in DocType 'Appointment Booking Slots'
 #: erpnext/crm/doctype/appointment_booking_slots/appointment_booking_slots.json
 msgid "From Time "
-msgstr "時間から"
+msgstr "開始時間"
 
 #: erpnext/accounts/doctype/cashier_closing/cashier_closing.py:67
 msgid "From Time Should Be Less Than To Time"
@@ -24034,7 +24034,7 @@ msgstr "タイムシートを非表示にします"
 #: erpnext/projects/doctype/task/task.json
 #: erpnext/setup/setup_wizard/operations/install_fixtures.py:275
 msgid "High"
-msgstr "高い"
+msgstr "高"   
 
 #. Description of the 'Priority' (Select) field in DocType 'Pricing Rule'
 #: erpnext/accounts/doctype/pricing_rule/pricing_rule.json
@@ -25017,7 +25017,7 @@ msgstr "実装パートナー"
 #: erpnext/edi/doctype/code_list/code_list_import.js:43
 #: erpnext/edi/doctype/code_list/code_list_import.js:111
 msgid "Import"
-msgstr "輸入"
+msgstr "インポート"
 
 #. Description of a DocType
 #: erpnext/accounts/doctype/chart_of_accounts_importer/chart_of_accounts_importer.json
@@ -26682,7 +26682,7 @@ msgstr "アカウントは支払われますか"
 #: erpnext/projects/report/project_summary/project_summary.js:16
 #: erpnext/subcontracting/doctype/subcontracting_bom/subcontracting_bom.json
 msgid "Is Active"
-msgstr "アクティブです"
+msgstr "有効"
 
 #. Label of the is_additional_item (Check) field in DocType 'Work Order Item'
 #: erpnext/manufacturing/doctype/work_order_item/work_order_item.json
@@ -26942,7 +26942,7 @@ msgstr "完全に減価償却されます"
 #: erpnext/setup/doctype/territory/territory.json
 #: erpnext/stock/doctype/warehouse/warehouse_tree.js:20
 msgid "Is Group"
-msgstr "グループです"
+msgstr "グループ"
 
 #. Label of the is_group (Check) field in DocType 'Warehouse'
 #: erpnext/stock/doctype/warehouse/warehouse.json
@@ -26981,7 +26981,7 @@ msgstr "必須です"
 #. Label of the is_milestone (Check) field in DocType 'Task'
 #: erpnext/projects/doctype/task/task.json
 msgid "Is Milestone"
-msgstr "マイルストーンです"
+msgstr "マイルストーン"
 
 #. Label of the is_old_subcontracting_flow (Check) field in DocType 'Purchase
 #. Invoice'
@@ -27167,7 +27167,7 @@ msgstr "税源泉徴収口座です"
 #. Label of the is_template (Check) field in DocType 'Task'
 #: erpnext/projects/doctype/task/task.json
 msgid "Is Template"
-msgstr "テンプレートです"
+msgstr "テンプレート"
 
 #. Label of the is_transporter (Check) field in DocType 'Supplier'
 #: erpnext/buying/doctype/supplier/supplier.json
@@ -30139,7 +30139,7 @@ msgstr "値％を失った"
 #: erpnext/projects/doctype/task/task.json
 #: erpnext/setup/setup_wizard/operations/install_fixtures.py:273
 msgid "Low"
-msgstr "低い"
+msgstr "低"
 
 #. Label of a Link in the Accounting Workspace
 #. Name of a DocType
@@ -31603,7 +31603,7 @@ msgstr "保持できる最大サンプル量"
 #: erpnext/stock/doctype/delivery_note/delivery_note.json
 #: erpnext/telephony/doctype/call_log/call_log.json
 msgid "Medium"
-msgstr "中くらい"
+msgstr "中"
 
 #. Label of a Card Break in the Quality Workspace
 #: erpnext/quality_management/workspace/quality/quality.json
@@ -32293,7 +32293,7 @@ msgstr "月曜日"
 #. Label of the monitor_progress (Section Break) field in DocType 'Project'
 #: erpnext/projects/doctype/project/project.json
 msgid "Monitor Progress"
-msgstr "進捗状況を監視します"
+msgstr "進捗監視設定"
 
 #. Label of the monitor_for_last_x_days (Int) field in DocType 'Ledger Health
 #. Monitor'
@@ -32496,7 +32496,7 @@ msgstr "詳細"
 #: erpnext/subcontracting/doctype/subcontracting_receipt/subcontracting_receipt.json
 #: erpnext/support/doctype/warranty_claim/warranty_claim.json
 msgid "More Information"
-msgstr "詳細情報"
+msgstr "実績入力"
 
 #. Description of the 'Is Short/Long Year' (Check) field in DocType 'Fiscal
 #. Year'
@@ -33086,7 +33086,7 @@ msgstr "正味合計計算精度損失"
 
 #: erpnext/accounts/doctype/account/account_tree.js:231
 msgid "New"
-msgstr "新しい"
+msgstr 新規
 
 #: erpnext/accounts/doctype/account/account_tree.js:123
 msgid "New Account Name"
@@ -33359,7 +33359,7 @@ msgstr "次のメールが送信されます："
 #: erpnext/stock/doctype/shipment/shipment.json
 #: erpnext/stock/doctype/stock_entry/stock_entry.json
 msgid "No"
-msgstr "いいえ"
+msgstr ""
 
 #: erpnext/setup/doctype/company/test_company.py:99
 msgid "No Account matched these filters: {}"
@@ -33716,7 +33716,7 @@ msgstr "社内取引には{0}は見つかりませんでした。"
 
 #: erpnext/assets/doctype/asset/asset.js:286
 msgid "No."
-msgstr "いいえ。"
+msgstr ""
 
 #. Label of the no_of_employees (Select) field in DocType 'Prospect'
 #: erpnext/crm/doctype/prospect/prospect.json
@@ -34503,7 +34503,7 @@ msgstr "{0}のみがサポートされています"
 #: erpnext/support/report/issue_summary/issue_summary.py:360
 #: erpnext/templates/pages/task_info.html:72
 msgid "Open"
-msgstr "開ける"
+msgstr "開始"
 
 #. Label of the open_activities_html (HTML) field in DocType 'Lead'
 #. Label of the open_activities_html (HTML) field in DocType 'Opportunity'
@@ -37682,7 +37682,7 @@ msgstr "保留中の数量"
 #: erpnext/projects/doctype/task/task.json
 #: erpnext/templates/pages/task_info.html:74
 msgid "Pending Review"
-msgstr "保留中のレビュー"
+msgstr "レビュー中"
 
 #. Name of a report
 #. Label of a Link in the Selling Workspace
@@ -52089,7 +52089,7 @@ msgstr "開始年と終わりの年は必須です"
 #. Label of the section_break_18 (Section Break) field in DocType 'Project'
 #: erpnext/projects/doctype/project/project.json
 msgid "Start and End Dates"
-msgstr "日付を開始して終了します"
+msgstr "実績期間"
 
 #. Description of the 'From Date' (Date) field in DocType 'Purchase Invoice'
 #: erpnext/accounts/doctype/purchase_invoice/purchase_invoice.json
@@ -53563,7 +53563,7 @@ msgstr "区画"
 #: erpnext/support/doctype/issue/issue.json
 #: erpnext/templates/pages/task_info.html:44
 msgid "Subject"
-msgstr "主題"
+msgstr "件名"
 
 #: erpnext/accounts/doctype/payment_order/payment_order.js:139
 #: erpnext/accounts/doctype/pos_invoice/pos_invoice.js:311
@@ -57547,7 +57547,7 @@ msgstr "株主に"
 #: erpnext/telephony/doctype/incoming_call_handling_schedule/incoming_call_handling_schedule.json
 #: erpnext/templates/pages/timelog_info.html:34
 msgid "To Time"
-msgstr "時間に"
+msgstr "終了時間"
 
 #: erpnext/projects/doctype/timesheet_detail/timesheet_detail.py:98
 msgid "To Time cannot be before from date"
@@ -61954,7 +61954,7 @@ msgstr "送信する時間の時間"
 #: erpnext/projects/doctype/task/task.json
 #: erpnext/projects/doctype/task_type/task_type.json
 msgid "Weight"
-msgstr "重さ"
+msgstr "タスクウェイト"
 
 #. Label of the weight (Float) field in DocType 'Shipment Parcel'
 #. Label of the weight (Float) field in DocType 'Shipment Parcel Template'
@@ -62137,7 +62137,7 @@ msgstr "撤退"
 #. Purpose'
 #: erpnext/maintenance/doctype/maintenance_visit_purpose/maintenance_visit_purpose.json
 msgid "Work Done"
-msgstr "完了しました"
+msgstr "完了"
 
 #. Option for the 'Status' (Select) field in DocType 'Asset'
 #. Option for the 'Status' (Select) field in DocType 'Job Card'
@@ -62324,7 +62324,7 @@ msgstr "ワークフロー状態"
 #: erpnext/projects/doctype/task/task.json
 #: erpnext/templates/pages/task_info.html:73
 msgid "Working"
-msgstr "働く"
+msgstr "処理中"
 
 #. Label of the working_hours_section (Tab Break) field in DocType
 #. 'Workstation'
@@ -64020,3 +64020,10 @@ msgstr ""
 #: erpnext/accounts/doctype/bank_transaction/bank_transaction.py:347
 msgid "{} {} is not affecting bank account {}"
 msgstr ""
+
+
+msgid "Issues Expense"
+msgstr "経費課題"
+
+msgid "Miscellaneous Cost"
+msgstr "雑費"

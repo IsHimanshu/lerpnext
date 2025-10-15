@@ -25,9 +25,9 @@ class Project(Document):
 	from typing import TYPE_CHECKING
 
 	if TYPE_CHECKING:
-		from frappe.types import DF
-
 		from erpnext.projects.doctype.project_user.project_user import ProjectUser
+		from frappe.types import DF
+		from hrms.ars_support.doctype.issue_details.issue_details import IssueDetails
 
 		actual_end_date: DF.Date | None
 		actual_start_date: DF.Date | None
@@ -49,7 +49,9 @@ class Project(Document):
 		gross_margin: DF.Currency
 		holiday_list: DF.Link | None
 		is_active: DF.Literal["Yes", "No"]
+		issue_expense: DF.Currency
 		message: DF.Text | None
+		miscellaneous_cost: DF.Data | None
 		naming_series: DF.Literal["PROJ-.####"]
 		notes: DF.TextEditor | None
 		per_gross_margin: DF.Percent
@@ -63,6 +65,7 @@ class Project(Document):
 		second_email: DF.Time | None
 		status: DF.Literal["Open", "Completed", "Cancelled"]
 		subject: DF.Data | None
+		table_xymv: DF.Table[IssueDetails]
 		to_time: DF.Time | None
 		total_billable_amount: DF.Currency
 		total_billed_amount: DF.Currency

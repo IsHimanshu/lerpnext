@@ -85,7 +85,7 @@
    "fieldname": "issue",
    "fieldtype": "Link",
    "label": "Issue",
-   "options": "Issue"
+   "options": "ars support issue"
   },
   {
    "fieldname": "type",
@@ -271,6 +271,7 @@
    "collapsible": 1,
    "fieldname": "sb_costing",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Costing"
   },
   {
@@ -321,6 +322,7 @@
   {
    "fieldname": "department",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Department",
    "options": "Department"
   },
@@ -328,6 +330,7 @@
    "fetch_from": "project.company",
    "fieldname": "company",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Company",
    "options": "Company",
    "remember_last_selected_value": 1
@@ -399,7 +402,7 @@
  "is_tree": 1,
  "links": [],
  "max_attachments": 5,
- "modified": "2024-05-24 12:36:12.214577",
+ "modified": "2025-09-10 16:26:37.270684",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Task",
@@ -420,6 +423,7 @@
   }
  ],
  "quick_entry": 1,
+ "row_format": "Dynamic",
  "search_fields": "subject",
  "show_name_in_global_search": 1,
  "show_preview_popup": 1,

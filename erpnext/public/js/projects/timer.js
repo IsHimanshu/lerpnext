@@ -9,12 +9,14 @@ erpnext.timesheet.timer = function (frm, row, timestamp = 0) {
 			{
 				fieldtype: "Link",
 				label: __("Activity Type"),
-				fieldname: "activity_type",
+				fieldname: "ts_activity_type",
 				reqd: 1,
-				options: "Activity Type",
+				options: "調査／企画\n画面設計\nコーディング\nコードレビュー\nデバッグ／テスト\nインフラ構築／デプロイ／保守\nインフラ計画\n打ち合わせ\n指示待ち\nサポート依頼対応\n顧客会議\n社内会議\n社外会議",
+				default: "調査／企画"
 			},
 			{ fieldtype: "Link", label: __("Project"), fieldname: "project", options: "Project" },
 			{ fieldtype: "Link", label: __("Task"), fieldname: "task", options: "Task" },
+			{ fieldtype: "Link", label: __("Issue"), fieldname: "issue", options: "ars support issue" },
 			{ fieldtype: "Float", label: __("Expected Hrs"), fieldname: "expected_hours" },
 			{ fieldtype: "Section Break" },
 			{ fieldtype: "HTML", fieldname: "timer_html" },
@@ -22,9 +24,10 @@ erpnext.timesheet.timer = function (frm, row, timestamp = 0) {
 	});
 	if (row) {
 		dialog.set_values({
-			activity_type: row.activity_type,
+			ts_activity_type: row.ts_activity_type,
 			project: row.project,
 			task: row.task,
+			issue:row.issue,
 			expected_hours: row.expected_hours,
 		});
 	} else {
@@ -123,9 +126,10 @@ erpnext.timesheet.control_timer = function (frm, dialog, row, timestamp = 0) {
 		var args = dialog.get_values(dialog);
 
 		grid_row.doc.completed = 1;
-		grid_row.doc.activity_type = args.activity_type;
+		grid_row.doc.ts_activity_type = args.ts_activity_type;
 		grid_row.doc.project = args.project;
 		grid_row.doc.task = args.task;
+		grid_row.doc.issue = args.issue;
 		grid_row.doc.expected_hours = args.expected_hours;
 		grid_row.doc.to_time = frappe.datetime.get_datetime_as_string();
 
@@ -157,7 +161,7 @@ erpnext.timesheet.control_timer = function (frm, dialog, row, timestamp = 0) {
 		const now = frappe.datetime.get_datetime_as_string();
 		const newRow = frappe.model.add_child(frm.doc, "Timesheet Detail", "time_logs");
 
-		newRow.activity_type = "Select"; 
+		newRow.ts_activity_type = "調査／企画"; 
 		newRow.from_time = now;
 		newRow.completed = 0;
 

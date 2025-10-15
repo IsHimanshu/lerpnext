@@ -17,7 +17,7 @@ class TimesheetDetail(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		activity_type: DF.Link | None
+		activity_type: DF.Literal["\u8abf\u67fb\uff0f\u4f01\u753b", "\u753b\u9762\u8a2d\u8a08", "\u30b3\u30fc\u30c7\u30a3\u30f3\u30b0", "\u30b3\u30fc\u30c9\u30ec\u30d3\u30e5\u30fc", "\u30c7\u30d0\u30c3\u30b0\uff0f\u30c6\u30b9\u30c8", "\u30a4\u30f3\u30d5\u30e9\u69cb\u7bc9\uff0f\u30c7\u30d7\u30ed\u30a4\uff0f\u4fdd\u5b88", "\u30a4\u30f3\u30d5\u30e9\u8a08\u753b", "\u6253\u3061\u5408\u308f\u305b", "\u6307\u793a\u5f85\u3061", "\u30b5\u30dd\u30fc\u30c8\u4f9d\u983c\u5bfe\u5fdc", "\u9867\u5ba2\u4f1a\u8b70", "\u793e\u5185\u4f1a\u8b70", "\u793e\u5916\u4f1a\u8b70"]
 		base_billing_amount: DF.Currency
 		base_billing_rate: DF.Currency
 		base_costing_amount: DF.Currency
@@ -33,6 +33,7 @@ class TimesheetDetail(Document):
 		from_time: DF.Datetime | None
 		hours: DF.Float
 		is_billable: DF.Check
+		issue: DF.Link | None
 		parent: DF.Data
 		parentfield: DF.Data
 		parenttype: DF.Data
@@ -78,15 +79,15 @@ class TimesheetDetail(Document):
 		if not self.is_billable and not self.activity_type:
 			return
 
-		rate = get_activity_cost(employee, self.activity_type)
+		rate = frappe.db.get_value("Employee", employee, "billing_rate")#get_activity_cost(employee, self.activity_type)
 		if not rate:
 			return
 
 		self.billing_rate = (
-			flt(rate.get("billing_rate")) if flt(self.billing_rate) == 0 else self.billing_rate
+			flt(rate) if flt(self.billing_rate) == 0 else self.billing_rate
 		)
 		self.costing_rate = (
-			flt(rate.get("costing_rate")) if flt(self.costing_rate) == 0 else self.costing_rate
+			flt(0) if flt(self.costing_rate) == 0 else self.costing_rate
 		)
 
 		self.billing_amount = self.billing_rate * (self.billing_hours or 0)
@@ -112,7 +113,7 @@ class TimesheetDetail(Document):
 			task_project = frappe.db.get_value("Task", self.task, "project")
 			if task_project and task_project != self.project:
 				frappe.throw(
-					_("Row {0}: Task {1} does not belong to Project {2}").format(
+					_("Row {0}: Task {1} does not belong to Project {2}").fsormat(
 						self.idx, frappe.bold(self.task), frappe.bold(self.project)
 					)
 				)

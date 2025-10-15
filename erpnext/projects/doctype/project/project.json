@@ -35,11 +35,15 @@
   "actual_time",
   "column_break_20",
   "actual_end_date",
+  "issues",
+  "table_xymv",
   "project_details",
   "estimated_costing",
   "total_costing_amount",
   "total_purchase_cost",
   "company",
+  "issue_expense",
+  "miscellaneous_cost",
   "column_break_28",
   "total_sales_amount",
   "total_billable_amount",
@@ -160,6 +164,7 @@
   {
    "fieldname": "department",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Department",
    "options": "Department"
   },
@@ -178,17 +183,19 @@
    "label": "Customer",
    "oldfieldname": "customer",
    "oldfieldtype": "Link",
-   "options": "Customer",
+   "options": "ars support customer",
    "print_hide": 1,
    "search_index": 1
   },
   {
    "fieldname": "column_break_14",
-   "fieldtype": "Column Break"
+   "fieldtype": "Column Break",
+   "hidden": 1
   },
   {
    "fieldname": "sales_order",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Sales Order",
    "options": "Sales Order"
   },
@@ -277,12 +284,14 @@
   {
    "fieldname": "total_costing_amount",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Total Costing Amount (via Timesheet)",
    "read_only": 1
   },
   {
    "fieldname": "total_purchase_cost",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Total Purchase Cost (via Purchase Invoice)",
    "read_only": 1
   },
@@ -301,6 +310,7 @@
   {
    "fieldname": "total_sales_amount",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Total Sales Amount (via Sales Order)",
    "read_only": 1
   },
@@ -313,18 +323,21 @@
   {
    "fieldname": "total_billed_amount",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Total Billed Amount (via Sales Invoice)",
    "read_only": 1
   },
   {
    "fieldname": "total_consumed_material_cost",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Total Consumed Material Cost (via Stock Entry)",
    "read_only": 1
   },
   {
    "fieldname": "cost_center",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Default Cost Center",
    "options": "Cost Center"
   },
@@ -332,6 +345,7 @@
    "collapsible": 1,
    "fieldname": "margin",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Margin",
    "oldfieldtype": "Column Break",
    "width": "50%"
@@ -455,6 +469,28 @@
    "fieldtype": "Data",
    "label": "Subject",
    "mandatory_depends_on": "collect_progress"
+  },
+  {
+   "fieldname": "issue_expense",
+   "fieldtype": "Currency",
+   "label": "Issues Expense",
+   "read_only": 1
+  },
+  {
+   "fieldname": "issues",
+   "fieldtype": "Section Break",
+   "label": "Issues"
+  },
+  {
+   "fieldname": "table_xymv",
+   "fieldtype": "Table",
+   "options": "Issue Details"
+  },
+  {
+   "fieldname": "miscellaneous_cost",
+   "fieldtype": "Data",
+   "label": "Miscellaneous Cost",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-puzzle-piece",
@@ -462,7 +498,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 4,
- "modified": "2025-07-03 10:54:30.444139",
+ "modified": "2025-09-17 11:37:26.242632",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project",
@@ -517,5 +553,6 @@
  "states": [],
  "timeline_field": "customer",
  "title_field": "project_name",
+ "track_changes": 1,
  "track_seen": 1
 }

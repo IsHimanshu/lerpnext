@@ -4,6 +4,10 @@
   {
    "chart": "Project Summary",
    "width": "Full"
+  },
+  {
+   "chart": "Project Costs",
+   "width": "Full"
   }
  ],
  "creation": "2020-07-20 20:17:16.397373",
@@ -13,7 +17,7 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2020-07-22 17:17:03.780625",
+ "modified": "2025-08-26 11:47:27.434429",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Project",

@@ -67,6 +67,7 @@
   {
    "fieldname": "company",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Company",
    "options": "Company",
    "remember_last_selected_value": 1
@@ -74,6 +75,7 @@
   {
    "fieldname": "sales_invoice",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Sales Invoice",
    "no_copy": 1,
    "options": "Sales Invoice",
@@ -179,6 +181,7 @@
    "collapsible": 1,
    "fieldname": "billing_details",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Billing Details",
    "permlevel": 1
   },
@@ -261,12 +264,14 @@
   {
    "fieldname": "parent_project",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Project",
    "options": "Project"
   },
   {
    "fieldname": "customer",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Customer",
    "options": "Customer"
   },
@@ -275,6 +280,7 @@
    "fetch_if_empty": 1,
    "fieldname": "currency",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Currency",
    "options": "Currency"
   },
@@ -303,6 +309,7 @@
    "default": "1",
    "fieldname": "exchange_rate",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Exchange Rate"
   }
  ],
@@ -310,7 +317,7 @@
  "idx": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-27 13:10:53.551907",
+ "modified": "2025-09-04 15:07:24.478438",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Timesheet",
@@ -386,6 +393,7 @@
    "write": 1
   }
  ],
+ "row_format": "Dynamic",
  "sort_field": "creation",
  "sort_order": "ASC",
  "states": [],

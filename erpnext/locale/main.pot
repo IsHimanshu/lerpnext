@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ERPNext VERSION\n"
 "Report-Msgid-Bugs-To: hello@frappe.io\n"
-"POT-Creation-Date: 2025-07-29 01:16+0000\n"
-"PO-Revision-Date: 2025-07-29 01:16+0000\n"
+"POT-Creation-Date: 2025-09-04 05:43+0000\n"
+"PO-Revision-Date: 2025-09-04 05:43+0000\n"
 "Last-Translator: hello@frappe.io\n"
 "Language-Team: hello@frappe.io\n"
 "MIME-Version: 1.0\n"
@@ -4551,11 +4551,6 @@ msgstr ""
 msgid "Allow transferring raw materials even after the Required Quantity is fulfilled"
 msgstr ""
 
-#. Label of the allowance (Int) field in DocType 'Employee'
-#: erpnext/setup/doctype/employee/employee.json
-msgid "Allowance range"
-msgstr ""
-
 #. Label of the allowed (Check) field in DocType 'Repost Allowed Types'
 #: erpnext/accounts/doctype/repost_allowed_types/repost_allowed_types.json
 msgid "Allowed"
@@ -5314,6 +5309,7 @@ msgstr ""
 #. 'Inventory Dimension'
 #: erpnext/accounts/doctype/pricing_rule/pricing_rule.json
 #: erpnext/accounts/doctype/promotional_scheme/promotional_scheme.json
+#: erpnext/accounts/doctype/promotional_scheme/promotional_scheme.py:262
 #: erpnext/stock/doctype/inventory_dimension/inventory_dimension.json
 msgid "Applicable For"
 msgstr ""
@@ -8810,6 +8806,11 @@ msgstr ""
 msgid "Breakdown"
 msgstr ""
 
+#. Label of the allowance (Int) field in DocType 'Employee'
+#: erpnext/setup/doctype/employee/employee.json
+msgid "Breakfast Allowance Range"
+msgstr ""
+
 #: erpnext/setup/setup_wizard/data/industry_type.txt:10
 msgid "Broadcasting"
 msgstr ""
@@ -9625,7 +9626,7 @@ msgstr ""
 msgid "Cannot Optimize Route as Driver Address is Missing."
 msgstr ""
 
-#: erpnext/setup/doctype/employee/employee.py:270
+#: erpnext/setup/doctype/employee/employee.py:267
 msgid "Cannot Relieve Employee"
 msgstr ""
 
@@ -9693,7 +9694,7 @@ msgstr ""
 msgid "Cannot change company's default currency, because there are existing transactions. Transactions must be cancelled to change the default currency."
 msgstr ""
 
-#: erpnext/projects/doctype/task/task.py:139
+#: erpnext/projects/doctype/task/task.py:136
 msgid "Cannot complete task {0} as its dependant task {1} are not completed / cancelled."
 msgstr ""
 
@@ -10506,7 +10507,7 @@ msgstr ""
 msgid "Child Row Reference"
 msgstr ""
 
-#: erpnext/projects/doctype/task/task.py:283
+#: erpnext/projects/doctype/task/task.py:280
 msgid "Child Task exists for this Task. You can not delete this Task."
 msgstr ""
 
@@ -10518,7 +10519,7 @@ msgstr ""
 msgid "Child warehouse exists for this warehouse. You can not delete this warehouse."
 msgstr ""
 
-#: erpnext/projects/doctype/task/task.py:231
+#: erpnext/projects/doctype/task/task.py:228
 msgid "Circular Reference Error"
 msgstr ""
 
@@ -11806,7 +11807,7 @@ msgstr ""
 msgid "Completed On"
 msgstr ""
 
-#: erpnext/projects/doctype/task/task.py:173
+#: erpnext/projects/doctype/task/task.py:170
 msgid "Completed On cannot be greater than Today"
 msgstr ""
 
@@ -15115,7 +15116,7 @@ msgstr ""
 msgid "Daily"
 msgstr ""
 
-#: erpnext/projects/doctype/project/project.py:673
+#: erpnext/projects/doctype/project/project.py:676
 msgid "Daily Project Summary for {0}"
 msgstr ""
 
@@ -15303,7 +15304,7 @@ msgstr ""
 msgid "Date of Birth"
 msgstr ""
 
-#: erpnext/setup/doctype/employee/employee.py:235
+#: erpnext/setup/doctype/employee/employee.py:232
 msgid "Date of Birth cannot be greater than today."
 msgstr ""
 
@@ -16661,7 +16662,7 @@ msgstr ""
 msgid "Dependent Task"
 msgstr ""
 
-#: erpnext/projects/doctype/task/task.py:169
+#: erpnext/projects/doctype/task/task.py:166
 msgid "Dependent Task {0} is not a Template Task"
 msgstr ""
 
@@ -19199,7 +19200,7 @@ msgstr ""
 msgid "Employee User Id"
 msgstr ""
 
-#: erpnext/setup/doctype/employee/employee.py:302
+#: erpnext/setup/doctype/employee/employee.py:299
 msgid "Employee cannot report to himself."
 msgstr ""
 
@@ -20126,7 +20127,7 @@ msgstr ""
 msgid "Expected End Date"
 msgstr ""
 
-#: erpnext/projects/doctype/task/task.py:108
+#: erpnext/projects/doctype/task/task.py:105
 msgid "Expected End Date should be less than or equal to parent task's Expected End Date {0}."
 msgstr ""
 
@@ -25923,7 +25924,7 @@ msgstr ""
 msgid "Invoice Type Created via POS Screen"
 msgstr ""
 
-#: erpnext/projects/doctype/timesheet/timesheet.py:403
+#: erpnext/projects/doctype/timesheet/timesheet.py:402
 msgid "Invoice already created for all billing hours"
 msgstr ""
 
@@ -25933,7 +25934,7 @@ msgstr ""
 msgid "Invoice and Billing"
 msgstr ""
 
-#: erpnext/projects/doctype/timesheet/timesheet.py:400
+#: erpnext/projects/doctype/timesheet/timesheet.py:399
 msgid "Invoice can't be made for zero billing hour"
 msgstr ""
 
@@ -26613,12 +26614,19 @@ msgstr ""
 msgid "Issued Items Against Work Order"
 msgstr ""
 
+#. Label of the issues (Section Break) field in DocType 'Project'
 #. Label of the issues_sb (Section Break) field in DocType 'Support Settings'
 #. Label of a Card Break in the Support Workspace
+#: erpnext/projects/doctype/project/project.json
 #: erpnext/support/doctype/issue/issue.py:181
 #: erpnext/support/doctype/support_settings/support_settings.json
 #: erpnext/support/workspace/support/support.json
 msgid "Issues"
+msgstr ""
+
+#. Label of the issue_expense (Currency) field in DocType 'Project'
+#: erpnext/projects/doctype/project/project.json
+msgid "Issues Expense"
 msgstr ""
 
 #. Label of the issuing_date (Date) field in DocType 'Driver'
@@ -30410,10 +30418,6 @@ msgstr ""
 msgid "Masters"
 msgstr ""
 
-#: erpnext/projects/doctype/project/project_dashboard.py:14
-msgid "Material"
-msgstr ""
-
 #: erpnext/manufacturing/doctype/work_order/work_order.js:748
 msgid "Material Consumption"
 msgstr ""
@@ -31275,6 +31279,11 @@ msgstr ""
 #. Label of the minutes (Table) field in DocType 'Quality Meeting'
 #: erpnext/quality_management/doctype/quality_meeting/quality_meeting.json
 msgid "Minutes"
+msgstr ""
+
+#. Label of the miscellaneous_cost (Data) field in DocType 'Project'
+#: erpnext/projects/doctype/project/project.json
+msgid "Miscellaneous Cost"
 msgstr ""
 
 #: erpnext/accounts/doctype/account/chart_of_accounts/verified/standard_chart_of_accounts.py:61
@@ -34825,16 +34834,6 @@ msgstr ""
 msgid "Overproduction for Sales and Work Order"
 msgstr ""
 
-#. Label of the overtime_leaves (Int) field in DocType 'Employee'
-#: erpnext/setup/doctype/employee/employee.json
-msgid "Overtime Leaves"
-msgstr ""
-
-#. Label of the overtime_mins (Float) field in DocType 'Employee'
-#: erpnext/setup/doctype/employee/employee.json
-msgid "Overtime MInutes"
-msgstr ""
-
 #. Label of the overview_tab (Tab Break) field in DocType 'Prospect'
 #. Label of the basic_details_tab (Tab Break) field in DocType 'Employee'
 #: erpnext/crm/doctype/prospect/prospect.json
@@ -35557,7 +35556,7 @@ msgstr ""
 msgid "Parent Task"
 msgstr ""
 
-#: erpnext/projects/doctype/task/task.py:162
+#: erpnext/projects/doctype/task/task.py:159
 msgid "Parent Task {0} is not a Template Task"
 msgstr ""
 
@@ -37864,7 +37863,7 @@ msgstr ""
 msgid "Please enter quantity for item {0}"
 msgstr ""
 
-#: erpnext/setup/doctype/employee/employee.py:272
+#: erpnext/setup/doctype/employee/employee.py:269
 msgid "Please enter relieving date."
 msgstr ""
 
@@ -37888,7 +37887,7 @@ msgstr ""
 msgid "Please enter valid Financial Year Start and End Dates"
 msgstr ""
 
-#: erpnext/setup/doctype/employee/employee.py:310
+#: erpnext/setup/doctype/employee/employee.py:307
 msgid "Please enter {0}"
 msgstr ""
 
@@ -37921,7 +37920,7 @@ msgstr ""
 msgid "Please import accounts against parent company or enable {} in company master."
 msgstr ""
 
-#: erpnext/setup/doctype/employee/employee.py:269
+#: erpnext/setup/doctype/employee/employee.py:266
 msgid "Please make sure the employees above report to another Active employee."
 msgstr ""
 
@@ -38390,11 +38389,11 @@ msgstr ""
 msgid "Please set a Supplier against the Items to be considered in the Purchase Order."
 msgstr ""
 
-#: erpnext/projects/doctype/project/project.py:729
+#: erpnext/projects/doctype/project/project.py:732
 msgid "Please set a default Holiday List for Company {0}"
 msgstr ""
 
-#: erpnext/setup/doctype/employee/employee.py:357
+#: erpnext/setup/doctype/employee/employee.py:354
 msgid "Please set a default Holiday List for Employee {0} or Company {1}"
 msgstr ""
 
@@ -40233,7 +40232,7 @@ msgstr ""
 msgid "Progress"
 msgstr ""
 
-#: erpnext/projects/doctype/task/task.py:148
+#: erpnext/projects/doctype/task/task.py:145
 #, python-format
 msgid "Progress % for a task cannot be more than 100."
 msgstr ""
@@ -40399,7 +40398,7 @@ msgstr ""
 msgid "Project"
 msgstr ""
 
-#: erpnext/projects/doctype/project/project.py:368
+#: erpnext/projects/doctype/project/project.py:371
 msgid "Project Collaboration Invitation"
 msgstr ""
 
@@ -40441,7 +40440,7 @@ msgstr ""
 msgid "Project Summary"
 msgstr ""
 
-#: erpnext/projects/doctype/project/project.py:667
+#: erpnext/projects/doctype/project/project.py:670
 msgid "Project Summary for {0}"
 msgstr ""
 
@@ -40555,7 +40554,7 @@ msgstr ""
 
 #. Name of a Workspace
 #. Label of a Card Break in the Projects Workspace
-#: erpnext/config/projects.py:7 erpnext/projects/doctype/project/project.py:446
+#: erpnext/config/projects.py:7 erpnext/projects/doctype/project/project.py:449
 #: erpnext/projects/workspace/projects/projects.json
 #: erpnext/selling/doctype/customer/customer_dashboard.py:26
 #: erpnext/selling/doctype/sales_order/sales_order_dashboard.py:28
@@ -40768,7 +40767,6 @@ msgstr ""
 #: erpnext/accounts/doctype/tax_category/tax_category_dashboard.py:10
 #: erpnext/accounts/doctype/tax_rule/tax_rule.json
 #: erpnext/manufacturing/doctype/material_request_plan_item/material_request_plan_item.json
-#: erpnext/projects/doctype/project/project_dashboard.py:16
 #: erpnext/setup/doctype/company/company.py:364
 #: erpnext/stock/doctype/item/item.json
 #: erpnext/stock/doctype/item_reorder/item_reorder.json
@@ -46296,7 +46294,7 @@ msgstr ""
 msgid "Row {0}: Account {1} and Party Type {2} have different account types"
 msgstr ""
 
-#: erpnext/projects/doctype/timesheet/timesheet.py:151
+#: erpnext/projects/doctype/timesheet/timesheet.py:150
 msgid "Row {0}: Activity Type is mandatory."
 msgstr ""
 
@@ -46389,12 +46387,12 @@ msgstr ""
 msgid "Row {0}: For Supplier {1}, Email Address is Required to send an email"
 msgstr ""
 
-#: erpnext/projects/doctype/timesheet/timesheet.py:148
+#: erpnext/projects/doctype/timesheet/timesheet.py:147
 msgid "Row {0}: From Time and To Time is mandatory."
 msgstr ""
 
 #: erpnext/manufacturing/doctype/job_card/job_card.py:260
-#: erpnext/projects/doctype/timesheet/timesheet.py:212
+#: erpnext/projects/doctype/timesheet/timesheet.py:211
 msgid "Row {0}: From Time and To Time of {1} is overlapping with {2}"
 msgstr ""
 
@@ -46406,7 +46404,7 @@ msgstr ""
 msgid "Row {0}: From time must be less than to time"
 msgstr ""
 
-#: erpnext/projects/doctype/timesheet/timesheet.py:154
+#: erpnext/projects/doctype/timesheet/timesheet.py:153
 msgid "Row {0}: Hours value must be greater than zero."
 msgstr ""
 
@@ -46753,11 +46751,6 @@ msgstr ""
 msgid "Salary"
 msgstr ""
 
-#. Label of the overtime_adjust (Select) field in DocType 'Employee'
-#: erpnext/setup/doctype/employee/employee.json
-msgid "Salary Adjustment"
-msgstr ""
-
 #. Label of the salary_currency (Link) field in DocType 'Employee'
 #: erpnext/setup/doctype/employee/employee.json
 msgid "Salary Currency"
@@ -46783,7 +46776,6 @@ msgstr ""
 #: erpnext/accounts/doctype/shipping_rule/shipping_rule_dashboard.py:10
 #: erpnext/accounts/doctype/tax_category/tax_category_dashboard.py:9
 #: erpnext/accounts/doctype/tax_rule/tax_rule.json
-#: erpnext/projects/doctype/project/project_dashboard.py:15
 #: erpnext/regional/report/vat_audit_report/vat_audit_report.py:185
 #: erpnext/selling/doctype/quotation/quotation.json
 #: erpnext/selling/doctype/sales_order/sales_order.json
@@ -49470,6 +49462,10 @@ msgstr ""
 msgid "Set Parent Row No in Items Table"
 msgstr ""
 
+#: erpnext/buying/doctype/request_for_quotation/request_for_quotation.py:279
+msgid "Set Password"
+msgstr ""
+
 #. Label of the set_posting_date (Check) field in DocType 'POS Opening Entry'
 #: erpnext/accounts/doctype/pos_opening_entry/pos_opening_entry.json
 msgid "Set Posting Date"
@@ -51282,7 +51278,7 @@ msgstr ""
 msgid "Status Illustration"
 msgstr ""
 
-#: erpnext/projects/doctype/project/project.py:710
+#: erpnext/projects/doctype/project/project.py:713
 msgid "Status must be Cancelled or Completed"
 msgstr ""
 
@@ -52460,6 +52456,10 @@ msgstr ""
 
 #: erpnext/manufacturing/doctype/work_order/work_order.js:178
 msgid "Submit this Work Order for further processing."
+msgstr ""
+
+#: erpnext/buying/doctype/request_for_quotation/request_for_quotation.py:280
+msgid "Submit your Quotation"
 msgstr ""
 
 #. Option for the 'Status' (Select) field in DocType 'Payment Entry'
@@ -54933,7 +54933,7 @@ msgstr ""
 msgid "The following deleted attributes exist in Variants but not in the Template. You can either delete the Variants or keep the attribute(s) in template."
 msgstr ""
 
-#: erpnext/setup/doctype/employee/employee.py:264
+#: erpnext/setup/doctype/employee/employee.py:261
 msgid "The following employees are currently still reporting to {0}:"
 msgstr ""
 
@@ -55721,7 +55721,7 @@ msgstr ""
 #. Label of the timesheet_sb (Section Break) field in DocType 'Projects
 #. Settings'
 #: erpnext/projects/doctype/projects_settings/projects_settings.json
-#: erpnext/projects/doctype/timesheet/timesheet.py:555
+#: erpnext/projects/doctype/timesheet/timesheet.py:554
 #: erpnext/templates/pages/projects.html:60
 msgid "Timesheets"
 msgstr ""
@@ -56554,6 +56554,11 @@ msgstr ""
 msgid "Total Billing Hours"
 msgstr ""
 
+#. Label of the days (Int) field in DocType 'Employee'
+#: erpnext/setup/doctype/employee/employee.json
+msgid "Total Breakfast days"
+msgstr ""
+
 #: erpnext/accounts/report/budget_variance_report/budget_variance_report.py:127
 msgid "Total Budget"
 msgstr ""
@@ -57147,11 +57152,6 @@ msgstr ""
 
 #: erpnext/selling/doctype/customer/customer.py:161
 msgid "Total contribution percentage should be equal to 100"
-msgstr ""
-
-#. Label of the days (Int) field in DocType 'Employee'
-#: erpnext/setup/doctype/employee/employee.json
-msgid "Total days"
 msgstr ""
 
 #: erpnext/projects/doctype/project/project_dashboard.html:2
@@ -58679,7 +58679,7 @@ msgstr ""
 msgid "Use Transaction Date Exchange Rate"
 msgstr ""
 
-#: erpnext/projects/doctype/project/project.py:561
+#: erpnext/projects/doctype/project/project.py:564
 msgid "Use a name that is different from previous project name"
 msgstr ""
 
@@ -58763,7 +58763,7 @@ msgstr ""
 msgid "User has not applied rule on the invoice {0}"
 msgstr ""
 
-#: erpnext/setup/doctype/employee/employee.py:279
+#: erpnext/setup/doctype/employee/employee.py:276
 msgid "User {0} does not exist"
 msgstr ""
 
@@ -58771,19 +58771,19 @@ msgstr ""
 msgid "User {0} doesn't have any default POS Profile. Check Default at Row {1} for this User."
 msgstr ""
 
-#: erpnext/setup/doctype/employee/employee.py:296
+#: erpnext/setup/doctype/employee/employee.py:293
 msgid "User {0} is already assigned to Employee {1}"
 msgstr ""
 
-#: erpnext/setup/doctype/employee/employee.py:281
+#: erpnext/setup/doctype/employee/employee.py:278
 msgid "User {0} is disabled"
 msgstr ""
 
-#: erpnext/setup/doctype/employee/employee.py:334
+#: erpnext/setup/doctype/employee/employee.py:331
 msgid "User {0}: Removed Employee Self Service role as there is no mapped employee."
 msgstr ""
 
-#: erpnext/setup/doctype/employee/employee.py:329
+#: erpnext/setup/doctype/employee/employee.py:326
 msgid "User {0}: Removed Employee role as there is no mapped employee."
 msgstr ""
 
@@ -61311,7 +61311,7 @@ msgstr ""
 msgid "You have already selected items from {0} {1}"
 msgstr ""
 
-#: erpnext/projects/doctype/project/project.py:361
+#: erpnext/projects/doctype/project/project.py:364
 msgid "You have been invited to collaborate on the project {0}."
 msgstr ""
 
@@ -62304,7 +62304,7 @@ msgstr ""
 msgid "{0}% of total invoice value will be given as discount."
 msgstr ""
 
-#: erpnext/projects/doctype/task/task.py:124
+#: erpnext/projects/doctype/task/task.py:121
 msgid "{0}'s {1} cannot be after {2}'s Expected End Date."
 msgstr ""
 
@@ -62426,15 +62426,5 @@ msgstr ""
 
 #: erpnext/accounts/doctype/bank_transaction/bank_transaction.py:347
 msgid "{} {} is not affecting bank account {}"
-msgstr ""
-
-#. Option for the 'Salary Adjustment' (Select) field in DocType 'Employee'
-#: erpnext/setup/doctype/employee/employee.json
-msgid "休暇"
-msgstr ""
-
-#. Option for the 'Salary Adjustment' (Select) field in DocType 'Employee'
-#: erpnext/setup/doctype/employee/employee.json
-msgid "給与"
 msgstr ""
 

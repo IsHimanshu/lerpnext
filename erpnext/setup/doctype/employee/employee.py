@@ -53,7 +53,7 @@ class Employee(NestedSet):
 		current_address: DF.SmallText | None
 		date_of_birth: DF.Date
 		date_of_issue: DF.Date | None
-		date_of_joining: DF.Date
+		date_of_joining: DF.Date | None
 		date_of_retirement: DF.Date | None
 		days: DF.Int
 		department: DF.Link | None

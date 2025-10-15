@@ -249,8 +249,7 @@
    "fieldtype": "Date",
    "label": "Date of Joining",
    "oldfieldname": "date_of_joining",
-   "oldfieldtype": "Date",
-   "reqd": 1
+   "oldfieldtype": "Date"
   },
   {
    "allow_in_quick_entry": 1,
@@ -403,7 +402,6 @@
    "collapsible": 1,
    "fieldname": "salary_information",
    "fieldtype": "Tab Break",
-   "hidden": 1,
    "label": "Salary",
    "oldfieldtype": "Section Break",
    "width": "50%"
@@ -849,6 +847,7 @@
    "fieldname": "days",
    "fieldtype": "Int",
    "label": "Total Breakfast days",
+   "non_negative": 1,
    "read_only_depends_on": "eval:frappe.session.user !== 'Administrator'\r\n"
   },
   {
@@ -860,7 +859,7 @@
  "image_field": "image",
  "is_tree": 1,
  "links": [],
- "modified": "2025-07-31 18:21:57.610920",
+ "modified": "2025-09-10 10:29:29.653966",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Employee",
